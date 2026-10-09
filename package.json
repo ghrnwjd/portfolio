@@ -1,0 +1,22 @@
+{
+  "name": "hoyeongjung",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init:local": "wrangler d1 execute research-db --local --file=./schema.sql",
+    "db:init:remote": "wrangler d1 execute research-db --remote --file=./schema.sql",
+    "inspect": "npx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "agents": "^0.27.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261006.1",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.148.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hoyeongjung",
+  "account_id": "6fdce26c52559de5c8f52e5a31eaeea6",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // MCP 세션 상태용 Durable Object (SQLite 기반 → 무료 플랜 OK)
+  "durable_objects": {
+    "bindings": [{ "name": "MCP_OBJECT", "class_name": "ResearchMCP" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ResearchMCP"] }],
+
+  // 기록 저장용 D1 — `wrangler d1 create research-db` 후 나온 id로 교체
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "research-db",
+      "database_id": "9539405e-6deb-40a1-8066-fbf525dad975"
+    }
+  ],
+
+
+  "observability": { "enabled": true }
+}
